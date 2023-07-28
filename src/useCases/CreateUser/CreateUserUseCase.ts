@@ -1,10 +1,12 @@
 import { Usuario } from "../../entities/Usuario";
+import { ImailProvider } from "../../providers/IMailProvider";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { ICreateUserRequestDTO } from "./CreateUserDTO";
 
 export class CreateUserUseCase{
     constructor(
-        private usersRepository: IUsersRepository
+        private usersRepository: IUsersRepository,
+        private mailProvider: ImailProvider,
     ){}
     
     
@@ -19,5 +21,19 @@ export class CreateUserUseCase{
         const usuario = new Usuario(data);
 
         await this.usersRepository.save(usuario);
+
+        this.mailProvider.sendMail({
+            to:{
+                nome:data.nome,
+                email: data.email,
+            },
+            from: {
+                email: 'suporte@lagcompany.com',
+                nome: 'Suporte Lag Company',
+                
+            },
+            subject: 'Bem-vindo ao aplicativo',
+            body: '<p>Você já pode fazer login em nossa plataforma.</p>'
+        })
     }
 }
