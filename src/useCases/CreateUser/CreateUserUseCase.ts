@@ -1,12 +1,12 @@
 import { Usuario } from "../../entities/Usuario";
-import { ImailProvider } from "../../providers/IMailProvider";
+import { IMailProvider } from "../../providers/IMailProvider";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
 import { ICreateUserRequestDTO } from "./CreateUserDTO";
 
 export class CreateUserUseCase{
     constructor(
         private usersRepository: IUsersRepository,
-        private mailProvider: ImailProvider,
+        private mailProvider: IMailProvider,
     ){}
     
     
@@ -22,7 +22,7 @@ export class CreateUserUseCase{
 
         await this.usersRepository.save(usuario);
 
-        this.mailProvider.sendMail({
+        await this.mailProvider.sendMail({
             to:{
                 nome:data.nome,
                 email: data.email,
