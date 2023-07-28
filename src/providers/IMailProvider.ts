@@ -1,6 +1,6 @@
 interface IAdress{
     email:string;
-    name:string;
+    nome:string;
 }
 export interface IMessage{
     to : IAdress,
