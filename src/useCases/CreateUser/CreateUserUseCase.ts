@@ -10,7 +10,7 @@ export class CreateUserUseCase{
     ){}
     
     
-    async execute (data: ICreateUserRequestDTO) {
+    async execute (data: ICreateUserRequestDTO) : Promise<Usuario[]> {
 
         const usuarioExiste = await this.usersRepository.findByEmail(data.email);
         
@@ -19,8 +19,7 @@ export class CreateUserUseCase{
         }
 
         const usuario = new Usuario(data);
-
-        await this.usersRepository.save(usuario);
+        
 
         await this.mailProvider.sendMail({
             to:{
@@ -35,5 +34,7 @@ export class CreateUserUseCase{
             subject: 'Bem-vindo ao aplicativo',
             body: '<p>Você já pode fazer login em nossa plataforma.</p>'
         })
+
+        return await this.usersRepository.save(usuario);
     }
 }

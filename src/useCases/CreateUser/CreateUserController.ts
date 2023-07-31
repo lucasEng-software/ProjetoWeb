@@ -10,12 +10,12 @@ export class CreateUserController{
         const { nome, email, password } = request.body;
 
         try{
-            await this.createUserUseCase.execute({
+            const lista = await this.createUserUseCase.execute({
             nome,
             email,
-            password 
+            password
             })
-            return response.status(201).send();
+            return response.status(201).json(lista);
         } catch (err) {
             return response.status(400).json({
                 message:err.message || 'Erro inesperado'
