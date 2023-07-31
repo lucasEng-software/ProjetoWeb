@@ -10,8 +10,9 @@ export class UsersRespository implements IUsersRepository{
 
     }
 
-    async save (usuario: Usuario): Promise<void>{
+    async save (usuario: Usuario): Promise<Usuario[]>{
         this.usuarios.push(usuario);
+        return this.usuarios;
     }
 
     async list(): Promise<Usuario[]>{
