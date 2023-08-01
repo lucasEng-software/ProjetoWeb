@@ -1,3 +1,4 @@
+import { Response } from 'express';
 import { Usuario } from "../../entities/Usuario";
 import { IMailProvider } from "../../providers/IMailProvider";
 import { IUsersRepository } from "../../repositories/IUsersRepository";
@@ -10,9 +11,11 @@ export class CreateUserUseCase{
     ){}
     
     
-    async execute (data: ICreateUserRequestDTO) : Promise<Usuario[]> {
+    async execute (data: ICreateUserRequestDTO) : Promise<{ status: string; mensagem: string }> {
 
         const usuarioExiste = await this.usersRepository.findByEmail(data.email);
+
+
         
         if(usuarioExiste){
             throw  new Error('Usuário já cadastrado');
@@ -20,7 +23,6 @@ export class CreateUserUseCase{
 
         const usuario = new Usuario(data);
         
-
         await this.mailProvider.sendMail({
             to:{
                 nome:data.nome,
