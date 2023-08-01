@@ -3,7 +3,6 @@ import { Request, Response } from "express";
 import { IUsersRepository } from './../IUsersRepository';
 const bd = require('../Implementations/ConexaoBD')
 export class UsersRespository implements IUsersRepository{
-    private usuarios: Usuario[] = [];
 
     async findByEmail(email: string): Promise<Usuario> {
         const usuario = bd.findOne({
@@ -32,7 +31,7 @@ export class UsersRespository implements IUsersRepository{
     }
 
     async list(): Promise<Usuario[]>{
-        return this.usuarios;
+        return bd.findAll();
     }
 }
 
