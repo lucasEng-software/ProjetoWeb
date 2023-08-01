@@ -10,7 +10,7 @@ router.post('/usuario', (request, response) =>{
 });
 
 
-router.get('/usuario', (request, response) =>{
+router.get('/', (request, response) =>{
     return getUsersControler.handle(request, response) // Funcionando!! Implementar agora o retorno JSON, e posteriormente o banco de dados e tratamento de excessões
 });
 
