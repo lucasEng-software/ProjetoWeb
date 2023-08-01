@@ -14,9 +14,6 @@ export class CreateUserUseCase{
     async execute (data: ICreateUserRequestDTO) : Promise<{ status: string; mensagem: string }> {
 
         const usuarioExiste = await this.usersRepository.findByEmail(data.email);
-
-
-        
         if(usuarioExiste){
             throw  new Error('Usuário já cadastrado');
         }
