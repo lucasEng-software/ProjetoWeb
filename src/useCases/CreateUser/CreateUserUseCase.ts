@@ -11,11 +11,19 @@ export class CreateUserUseCase{
     ){}
     
     
-    async execute (data: ICreateUserRequestDTO) : Promise<{ status: string; mensagem: string }> {
-
+    async execute (data: ICreateUserRequestDTO) : Promise<{ status: number; mensagem: string, usuario:Usuario }> {
+        
+        let retornoCadastro;
         const usuarioExiste = await this.usersRepository.findByEmail(data.email);
+        
+
         if(usuarioExiste){
-            throw  new Error('Usuário já cadastrado');
+            retornoCadastro = {
+                status:3,
+                mensagem: 'Usuário já cadastrado com esse e-mail',
+                usuario: null
+            };
+            return retornoCadastro
         }
 
         const usuario = new Usuario(data);
@@ -34,6 +42,12 @@ export class CreateUserUseCase{
             body: '<p>Você já pode fazer login em nossa plataforma.</p>'
         })
 
-        return await this.usersRepository.save(usuario);
+        const usuarioCadastrado = await this.usersRepository.save(usuario);
+        retornoCadastro = {
+            status:1,
+            mensagem: 'Usuário cadastrado com sucesso',
+            usuario: usuarioCadastrado
+        };
+        return retornoCadastro;
     }
 }
