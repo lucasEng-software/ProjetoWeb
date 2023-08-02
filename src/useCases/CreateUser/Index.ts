@@ -10,8 +10,8 @@ const createUserUseCase = new CreateUserUseCase(
     mailtrapMailProvider,
 )
 
-const createUserControler = new CreateUserController(
+const createUserController = new CreateUserController(
     createUserUseCase,  
 )
 
-export { createUserUseCase, createUserControler}
+export { createUserUseCase, createUserController}
