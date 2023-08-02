@@ -1,4 +1,4 @@
-import { Usuario } from '../../entities/Usuario';
+import { Usuario } from './../../entities/Usuario';
 import { Request, Response } from "express";
 import { IUsersRepository } from './../IUsersRepository';
 const bd = require('../Implementations/ConexaoBD')
@@ -13,25 +13,28 @@ export class UsersRespository implements IUsersRepository{
         return usuario;
     }
 
-    async save (usuario: Usuario): Promise<{ status: string; mensagem: string }>{
+    async save (usuario: Usuario): Promise<Usuario>{
         try{
-            await bd.create(usuario);
-            const retornoSucesso = {
-                status:'sucesso',
-                mensagem: 'Usuário cadastrado com sucesso!',
-            };
-            return retornoSucesso;
-        } catch (error) {
-            const retornoError = {
-                status:'error',
-                mensagem: 'Usuário não cadastrado com sucesso!',
-            };
-            return retornoError;
-        }    
+            const usuarioCriado = await bd.create(usuario);
+            
+            return usuarioCriado;
+        } catch {
+            throw  new Error('Erro ao cadastrar usuário');
+        }
     }
 
     async list(): Promise<Usuario[]>{
         return bd.findAll();
+    }
+
+    async findByName(nome: string):Promise<Usuario>{
+        const usuario = bd.findOne({
+            where: {
+              nome: nome
+            }
+          });
+        
+        return usuario;  
     }
 }
 
