@@ -3,10 +3,10 @@ import { MailtrapMailProvider } from './../../providers/Implementations/Mailtrap
 import { CreateUserController } from './CreateUserController';
 import { CreateUserUseCase } from './CreateUserUseCase';
 const mailtrapMailProvider = new MailtrapMailProvider();
-const userRespository = new UsersRespository();
+const userRepository = new UsersRespository();
 
 const createUserUseCase = new CreateUserUseCase(
-    userRespository,
+    userRepository,
     mailtrapMailProvider,
 )
 

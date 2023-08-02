@@ -7,4 +7,6 @@ export interface IUsersRepository {
     save(usuario:Usuario): Promise<Usuario>;
     list():Promise<Usuario[]>;
     findByName(nome:string): Promise <Usuario>;
+    findById(id:string): Promise <Usuario>;
+    deleteUserById(id:string): Promise <Usuario>;
 }

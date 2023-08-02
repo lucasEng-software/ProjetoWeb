@@ -36,6 +36,21 @@ export class UsersRespository implements IUsersRepository{
         
         return usuario;  
     }
+
+    async findById(id: string): Promise<Usuario> {
+      const usuario = await bd.findByPk(id);
+
+      return usuario;
+    }
+
+    async deleteUserById(id: string): Promise<Usuario> {
+      const usuario = bd.destroy({
+        where: {
+          id: id
+        }
+      });    
+      return usuario;
+    }
 }
 
     
