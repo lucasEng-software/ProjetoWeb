@@ -1,17 +1,22 @@
 import { Router } from "express"
-import { createUserControler } from "./useCases/CreateUser/Index";
-import { getUsersControler } from "./useCases/GetUsers/Index";
-
+import { createUserController } from "./useCases/CreateUser/Index";
+import { getUsersController } from "./useCases/GetUsers/Index";
+import {getUserByNameController} from "./useCases/GetUserByName";
 
 const router = Router()
 
-router.post('/usuario', (request, response) =>{
-    return createUserControler.handle(request, response)
+router.post('/usuarios', (request, response) =>{
+    return createUserController.handle(request, response)
+});
+
+router.get('/usuarios/buscaPorNome/:nome', (request, response) =>{
+    return getUserByNameController.handle(request, response)
+});
+
+router.get('/usuarios', (request, response) =>{
+    return getUsersController.handle(request, response)
 });
 
 
-router.get('/', (request, response) =>{
-    return getUsersControler.handle(request, response) // Funcionando!! Implementar agora o retorno JSON, e posteriormente o banco de dados e tratamento de excessões
-});
 
 export{ router }
