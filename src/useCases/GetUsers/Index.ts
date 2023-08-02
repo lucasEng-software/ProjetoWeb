@@ -8,8 +8,8 @@ const getUsersCase = new GetUsersCase(
     usersRespository,
 )
 
-const getUsersControler = new GetUsersController(
+const getUsersController = new GetUsersController(
     getUsersCase,
 )
 
-export { getUsersCase, getUsersControler}
+export { getUsersCase, getUsersController}
