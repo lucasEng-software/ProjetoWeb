@@ -15,7 +15,12 @@ export class CreateUserController{
             email,
             password,  
             })
-            return response.status(201).json(retorno);
+            if( retorno.status === 1 ){
+                return response.status(201).json(retorno);   
+            }else if( retorno.status === 3 ){
+                return response.status(409).json(retorno);
+            }
+         
         } catch (err) {
             return response.status(400).json({
                 message:err.message || 'Erro inesperado'
