@@ -1,11 +1,12 @@
 # Aplicação back-end e Front-end utiizando os Princípios SOLID
 
 ## Tecnologias
+### Javascript
 ### Typescript
 ### Node.js
-### Javascript
 ### React.js
-### MySQL
+### Next.js
+### MySQL --> Postgress em uma proxima versão
 
 
 #Status: Em desenvolvimento
