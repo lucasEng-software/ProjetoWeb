@@ -10,11 +10,11 @@ router.post('/usuarios', (request, response) =>{
     return createUserController.handle(request, response)
 });
 
-router.get('/usuarios/busca-por-nome/:nome', (request, response) =>{
+router.get('/usuarios/nome/:nome', (request, response) =>{
     return getUserByNameController.handle(request, response)
 });
 
-router.get('/usuarios/busca-por-id/:id', (request, response) =>{
+router.get('/usuarios/:id', (request, response) =>{
     return getUserByIdController.handle(request, response)
 });
 

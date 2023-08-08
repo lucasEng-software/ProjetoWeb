@@ -13,8 +13,12 @@ export class GetUsersController {
 
 
         try{
-            const lista = await this.getUsersCase.execute();
-            return response.status(201).json(lista); // alterar retorno para lista
+            const retorno = await this.getUsersCase.execute();
+            if(retorno.status === 1){
+                return response.status(200).json(retorno); 
+            }else if(retorno.status === 4){
+                return response.status(404).json(retorno);
+            }
         } catch (err){
             return response.status(400).json({            
                 message:err.message  || 'Erro Inesperado'

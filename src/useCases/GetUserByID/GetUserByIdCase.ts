@@ -20,7 +20,7 @@ export class GetUserByIdCase{
             return retornoBuscaPorId;
         }else{
             retornoBuscaPorId = {
-                status:2,
+                status:4,
                 mensagem:'Não existe usuário com o ID Informado',
                 usuario: null
             }
