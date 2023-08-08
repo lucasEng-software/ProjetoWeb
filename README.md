@@ -24,5 +24,21 @@ GET http://localhost:3333/usuarios/
 DELETE http://localhost:3333/usuarios/f5724a34-029b-42d0-aa3c-3386a855a258
 
 #Status: Em desenvolvimento
+## 1º Etapa: Desenvolver o Back-end: Uma API CRUD que esteja conexa a um banco de dados MySQL utilizando os principios SOLID E NODE.JS
+<<<<<<< alteracao-da-api-para-padrao-rest
+----- No momento está sendo concluído esta etapa, ja existem duas rotas conectadas ao banco funcionando.
+
+
+## 2º Etapa: Criando projeto
+------ Criar projeto com react.js
+=======
+###  No momento foi criado as rotas de Criação, Busca geral, Delete, Busca por ID e nome de usuários utilizando os principios SOLID e Node.js
+### A aplicação está conexa a um Banco de dados Mysql.
+
+## Para proximas etapas:
+###Ampliar a regra de negócio, implementar novas excessões, update e trocar o banco para POSTGRESS
+
+# O front-end está sendo desenvolvieod em uma outra branch com React.js e ainda não subiu aqui no git.
+>>>>>>> master
 
 
