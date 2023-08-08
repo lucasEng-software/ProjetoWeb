@@ -15,7 +15,7 @@ export class CreateUserController{
             email,
             password,  
             })
-            if( retorno.status === 1 ){
+            if( retorno.status === 2 ){
                 return response.status(201).json(retorno);   
             }else if( retorno.status === 3 ){
                 return response.status(409).json(retorno);

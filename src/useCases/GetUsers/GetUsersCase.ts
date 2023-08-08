@@ -7,13 +7,23 @@ export class GetUsersCase {
         private usersRespository: IUsersRepository,
     ){}
     
-    async execute() : Promise<Usuario[]> {
+    async execute() : Promise<{ status: number; mensagem: string, usuarios: Usuario[]} > {
         const listaDeUsuarios = await this.usersRespository.list();
-        
+        let retorno;
         if (!listaDeUsuarios){
-            throw new Error ('Não existem usuários cadastrados');
+            retorno = {
+                status:4,
+                mensagem: 'Não existem usuários cadastrados',
+                usuarios: null
+            }
+            return retorno;
+             
         }
-        
-        return listaDeUsuarios;
+        retorno ={
+            status: 1,
+            mensagem:'Lista de Usuário carregada com sucesso!',
+            usuarios: listaDeUsuarios
+        }
+        return retorno
     }
 }

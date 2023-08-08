@@ -14,8 +14,8 @@ export class GetUserByNameController {
         try {
             const retorno  = await this.getUserByNameCase.execute(nome);
             if(retorno.status === 1){
-                return response.status(201).json(retorno);
-            }else if(retorno.status ===2){
+                return response.status(200).json(retorno);
+            }else if(retorno.status === 4){
                 return response.status(404).json(retorno);
             }
         }catch (err){

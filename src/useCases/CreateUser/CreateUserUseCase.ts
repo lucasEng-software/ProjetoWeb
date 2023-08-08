@@ -44,7 +44,7 @@ export class CreateUserUseCase{
 
         const usuarioCadastrado = await this.usersRepository.save(usuario);
         retornoCadastro = {
-            status:1,
+            status:2,
             mensagem: 'Usuário cadastrado com sucesso',
             usuario: usuarioCadastrado
         };

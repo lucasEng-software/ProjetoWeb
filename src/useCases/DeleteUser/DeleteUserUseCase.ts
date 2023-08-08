@@ -14,7 +14,7 @@ export class DeleteUserUseCase {
 
         if(!usuarioExiste){
             retornoDelete = {
-                status:2,
+                status:4,
                 mensagem:'Não existe usuário com o ID Informado',
                 usuario: null
             }

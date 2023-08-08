@@ -12,8 +12,8 @@ export class DeleteUserController {
 
             const retorno = await this.deleteUserUseCase.execute(id);
             if(retorno.status === 1){
-                return response.status(201).json(retorno);
-            } else if (retorno.status === 2){
+                return response.status(200).json(retorno);
+            } else if (retorno.status === 4){
                 return response.status(404).json(retorno);
             }
             

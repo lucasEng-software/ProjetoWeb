@@ -6,23 +6,24 @@ export class GetUserByNameCase {
         private usersRepository: IUsersRepository,
     ){}
 
-    async execute (nome: string) : Promise <{ status: number; mensagem: string }>{
+    async execute (nome: string) : Promise <{ status: number; mensagem: string; usuario: Usuario }>{
         
+        let retornoBuscaPorNome;
         const usuarioEncontrado = await this.usersRepository.findByName(nome);
         if (usuarioEncontrado){
-            const retornoSucesso = {
+            retornoBuscaPorNome = {
                 status:1,
                 mensagem: 'Usuário encontrado com sucesso',
                 usuario:usuarioEncontrado,
             };
-        return retornoSucesso;
+        return retornoBuscaPorNome;
         }else{
-            const retornoNaoEncontrado  = {
-                status:2,
+            retornoBuscaPorNome  = {
+                status:4,
                 mensagem: 'Usuário não cadastrado',
                 usuario:usuarioEncontrado,
             };
-            return retornoNaoEncontrado;
+            return retornoBuscaPorNome;
         }    
     }
 }
