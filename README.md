@@ -4,9 +4,7 @@
 ### Javascript
 ### Typescript
 ### Node.js
-### React.js
-### Next.js
-### MySQL --> Postgress em uma proxima versão
+### MySQL
 
 ##Status da API -
 * 1: Status 200 (OK)
